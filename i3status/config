@@ -1,0 +1,38 @@
+general {
+        colors = true
+        interval = 3
+        color_good =     '#88b090'  
+        color_degraded = '#ccdc90'  
+        color_bad =      '#e89393' 
+}
+order += "volume master"
+order += "disk /"
+order += "load"
+order += "memory"
+order += "tztime local"
+
+disk "/" {
+        format = "[ Disk: %avail ]"
+}
+
+load {
+        format = "[ Load: %1min ]"
+}
+
+memory {
+	format = "[ Ram: %used / %available ]"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = " [ %H:%M ] "
+}
+
+volume master {
+        format = "[ Volume: %volume ]"
+        format_muted = "Volume: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
